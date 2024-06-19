@@ -25,7 +25,6 @@ dependency_links = []
 # Version after which we use another method to install
 # dependencies from github
 # SPIN_PIP_VER = parse_version("18.1")
-SPIN_PIP_VER = parse("18.1")
 
 
 # Get back Pip version
