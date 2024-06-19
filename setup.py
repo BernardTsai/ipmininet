@@ -6,7 +6,7 @@ import os
 import shutil
 import sys
 
-from pkg_resources import parse_version, require
+# from pkg_resources import parse_version, require
 from setuptools import setup, find_packages
 from setuptools.command.develop import develop
 from setuptools.command.install import install
@@ -24,25 +24,26 @@ dependency_links = []
 
 # Version after which we use another method to install
 # dependencies from github
-SPIN_PIP_VER = parse_version("18.1")
+# SPIN_PIP_VER = parse_version("18.1")
+SPIN_PIP_VER = parse("18.1")
 
 
 # Get back Pip version
-try:
-    version = parse_version(require("pip")[0].version)
-except IndexError:
-    version = parse_version("0")
-    print("We cannot find the version of pip."
-          "We assume that is it inferior to %s." % SPIN_PIP_VER)
+# try:    
+#    version = parse(require("pip")[0].version)
+# except IndexError:
+#    version = parse_version("0")
+#    print("We cannot find the version of pip."
+#          "We assume that is it inferior to %s." % SPIN_PIP_VER)
 
-if version >= SPIN_PIP_VER:
-    install_requires.append('mininet @ git+https://github.com/mininet/mininet@{ver}'
+# if version >= SPIN_PIP_VER:
+install_requires.append('mininet @ git+https://github.com/mininet/mininet@{ver}'
                             .format(ver=MININET_VERSION))
-else:
-    print("You should run pip with --process-dependency-links to install all the dependencies")
-    install_requires.append('mininet=={ver}'.format(ver=MININET_VERSION))
-    dependency_links.append('git+https://github.com/mininet/mininet@{ver}#egg=mininet-{ver}'
-                            .format(ver=MININET_VERSION))
+# else:
+#     print("You should run pip with --process-dependency-links to install all the dependencies")
+#     install_requires.append('mininet=={ver}'.format(ver=MININET_VERSION))
+#     dependency_links.append('git+https://github.com/mininet/mininet@{ver}#egg=mininet-{ver}'
+#                              .format(ver=MININET_VERSION))
 
 
 def setup_mininet_dep():
