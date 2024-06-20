@@ -36,8 +36,8 @@ dependency_links = []
 #          "We assume that is it inferior to %s." % SPIN_PIP_VER)
 
 # if version >= SPIN_PIP_VER:
-install_requires.append('mininet @ git+https://github.com/mininet/mininet@{ver}'
-                            .format(ver=MININET_VERSION))
+# install_requires.append('mininet @ git+https://github.com/mininet/mininet@{ver}'
+#                             .format(ver=MININET_VERSION))
 # else:
 #     print("You should run pip with --process-dependency-links to install all the dependencies")
 #     install_requires.append('mininet=={ver}'.format(ver=MININET_VERSION))
@@ -65,14 +65,14 @@ def setup_mininet_dep():
 class PostDevelopCommand(develop):
     """Post-installation for development mode."""
     def run(self):
-        setup_mininet_dep()
+        # setup_mininet_dep()
         develop.run(self)
 
 
 class PostInstallCommand(install):
     """Post-installation for installation mode."""
     def run(self):
-        setup_mininet_dep()
+        # setup_mininet_dep()
         install.run(self)
 
 
